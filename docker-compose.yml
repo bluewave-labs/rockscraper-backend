@@ -11,13 +11,13 @@ services:
     ports:
       - 3000:3000
     environment:
-      DB_HOST: $MONGO_HOST
-      DB_PORT: $MONGO_PORT
-      DB_USERNAME: $MONGO_USER
-      DB_PASSWORD: $MONGO_PASSWORD
-      REDIS_HOST: $REDIS_HOST
+      MONGO_HOST: $MONGO_HOST
+      MONGO_PORT: $MONGO_PORT
+      MONGO_USER: $MONGO_USER
+      MONGO_PASSWORD: $MONGO_PASSWORD
+      REDIS_HOST: redis
       REDIS_PORT: $REDIS_PORT
-      DB_NAME: $MONGO_DBNAME
+      MONGO_DBNAME: $MONGO_DBNAME
     depends_on:
       - mongo
       - redis
@@ -46,13 +46,13 @@ services:
       - mongo
 
   redis:
-    image: redis
+    image: redis:6.2-alpine
     restart: always
     ports:
       - $REDIS_PORT:6379
     volumes:
-      - ./data/redis:/usr/local/etc/redis
-    command: redis-server /usr/local/etc/redis/redis.conf
+      - ./data/redis:/data
+    command: redis-server --save 20 1 --loglevel warning
 
 volumes:
   data:
