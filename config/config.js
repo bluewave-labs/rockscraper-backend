@@ -1,5 +1,5 @@
 require('dotenv').config();
-const envSuffix = process.env.NODE_ENV && process.env.NODE_ENV == 'test' ? `.${process.env.NODE_ENV}` : '';
+const envSuffix = process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : '';
 const env = `.env${envSuffix}`;
 
 const dotenv = require('dotenv');
@@ -11,45 +11,47 @@ if (result.error) {
 }
 
 const {
-  DB_HOST,
-  DB_NAME,
-  DB_PASSWORD,
-  DB_PORT,
-  DB_USERNAME,
-  TEST_DB_HOST,
-  TEST_DB_NAME,
-  TEST_DB_PASSWORD,
-  TEST_DB_PORT,
-  TEST_DB_USERNAME,
+  MONGO_USER,
+  MONGO_PASSWORD,
+  MONGO_HOST,
+  MONGO_PORT,
+  MONGO_DBNAME,
+  TEST_USER,
+  TEST_PASSWORD,
+  TEST_HOST,
+  TEST_PORT,
+  TEST_DBNAME,
+  PROD_USER,
+  PROD_PASSWORD,
+  PROD_HOST,
+  PROD_PORT,
+  PROD_DBNAME,
 } = process.env;
 
 module.exports = {
   defaultTeamName: 'My Organisation',
-  development: {
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: DB_NAME,
-    host: DB_HOST,
-    dialect: 'postgres',
-    port: DB_PORT,
-    logging: false,
+  dev: {
+    username: MONGO_USER,
+    password: MONGO_PASSWORD,
+    database: MONGO_DBNAME,
+    host: MONGO_HOST,
+    port: MONGO_PORT,
+    dialect: 'mongodb', 
   },
   test: {
-    username: TEST_DB_USERNAME,
-    password: TEST_DB_PASSWORD,
-    database: TEST_DB_NAME,
-    host: TEST_DB_HOST,
-    dialect: 'postgres',
-    port: TEST_DB_PORT,
-    logging: false,
+    username: TEST_USER,
+    password: TEST_PASSWORD,
+    database: TEST_DBNAME,
+    host: TEST_HOST,
+    port: TEST_PORT,
+    dialect: 'mongodb',
   },
-  production: {
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: DB_NAME,
-    host: DB_HOST,
-    dialect: 'postgres',
-    port: DB_PORT,
-    logging: false,
+  prod: {
+    username: PROD_USER,
+    password: PROD_PASSWORD,
+    database: PROD_DBNAME,
+    host: PROD_HOST,
+    port: PROD_PORT,
+    dialect: 'mongodb',
   },
 };

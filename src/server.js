@@ -7,21 +7,21 @@ const mongoose = require("mongoose");
 const jsonErrorMiddleware = require("./middleware/jsonError.middleware");
 const fileSizeValidator = require("./middleware/fileSizeValidator.middleware");
 const { MAX_FILE_SIZE } = require("./utils/constants.helper");
+const config = require("../config/config.js");
 
 // Load environment variables from .env file
 dotenv.config();
-const app = express();
+const env = process.env.NODE_ENV || "development";
+const envConfig = config[env];
 
+const app = express();
 app.use(cors());
 app.options('*', cors()); // this is for preflight requests
 app.use(helmet());
 app.use(bodyParser.json({ limit: MAX_FILE_SIZE }));
 app.use(jsonErrorMiddleware);
-if (process.env.ENABLE_IP_CHECK === 'true') {
-  app.use(ipFilter);
-}
 
-const MONGO_URI = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DBNAME}?authSource=admin`;
+const MONGO_URI = `mongodb://${envConfig.username}:${envConfig.password}@${envConfig.host}:${envConfig.port}/${envConfig.database}?authSource=admin`;
 mongoose.connect(MONGO_URI)
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log("Error: " + err));
