@@ -21,6 +21,12 @@ services:
     depends_on:
       - mongo
       - redis
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3000/health']
+      interval: 1s
+      timeout: 1s
+      retries: 3
+
   mongo:
     image: mongo
     restart: always
@@ -31,6 +37,11 @@ services:
       - $MONGO_PORT:27017
     volumes:
       - ./data/db:/data/db
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
+      interval: 1s
+      timeout: 1s
+      retries: 3
 
   mongo-express:
     image: mongo-express
@@ -53,6 +64,11 @@ services:
     volumes:
       - ./data/redis:/data
     command: redis-server --save 20 1 --loglevel warning
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 1s
+      timeout: 1s
+      retries: 3
 
 volumes:
   data:

@@ -3,3 +3,4 @@ logs/
 dist/
 .nyc_output
 package-lock.json
+data/
