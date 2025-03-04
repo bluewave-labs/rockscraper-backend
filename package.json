@@ -12,7 +12,9 @@
     "test:unit": "NODE_ENV=test mocha 'src/test/unit/**/*.test.js' --watch",
     "dev": "nodemon index.js",
     "prod": "node index.js",
-    "build": "echo 'No build script defined'"
+    "build": "echo 'No build script defined'",
+    "dockerUp": "NODE_ENV=development docker-compose --env-file .env.dev up -d",
+    "dockerDown": "docker-compose down"
   },
   "keywords": [],
   "author": "",
