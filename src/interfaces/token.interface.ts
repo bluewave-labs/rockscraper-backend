@@ -7,4 +7,4 @@ interface TokenInterface {
   destroy: () => Promise<void>;
 }
 
-export default TokenInterface;
+export { TokenInterface };

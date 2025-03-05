@@ -1,10 +1,9 @@
 import { ErrorHelperInterface } from '../interfaces/error.interface';
-
-const { STATUS_CODES } = require('http');
+import { STATUS_CODES } from 'http';
 const GENERAL_ERROR_CODE = '099';
 
 function errorResponse(statusCode: number, errorCode: string, message: null | undefined | string) {
-  const payload: ErrorHelperInterface = { error: STATUS_CODES[statusCode] || 'Unknown error' };
+  const payload: ErrorHelperInterface = { error: STATUS_CODES[statusCode] ?? 'Unknown error' };
   if (message) {
     payload.message = message;
   }

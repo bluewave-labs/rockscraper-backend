@@ -1,20 +1,22 @@
 /* eslint-disable no-unused-vars */
-import { NextFunction, Request, Response } from 'express';
+import { ErrorRequestHandler } from 'express';
 import HTTP_STATUS_CODES from '../utils/httpCodes';
 import StatusError from '../utils/statusError';
 
-function errorMiddleware(error: Error, req: Request, res: Response, next: NextFunction) {
+const errorMiddleware: ErrorRequestHandler = (error, req, res, next) => {
   if (error instanceof StatusError) {
-    return res.status(error.statusCode).json({ success: false, data: null, error: error.message });
+    res.status(error.statusCode).json({ success: false, data: null, error: error.message });
+    return;
   }
   if (error instanceof SyntaxError) {
     console.error('JSON Syntax Error:', error);
-    return res.status(400).json({ error: 'Invalid JSON format' });
+    res.status(400).json({ error: 'Invalid JSON format' });
+    return;
   }
   console.log(error);
-  return res
+  res
     .status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR)
     .json({ success: false, data: null, error: 'Internal Server Error' });
-}
+};
 
 export default errorMiddleware;

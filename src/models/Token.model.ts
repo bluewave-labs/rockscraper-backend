@@ -1,7 +1,7 @@
-import TokenInterface from "../interfaces/token.interface";
+import { TokenInterface } from '../interfaces/token.interface';
 
 const Token = {
-  findOne: async (val: any) => ({}) as TokenInterface,
+  findOne: async (val: any) => ({} as TokenInterface),
 };
 
 export default Token;

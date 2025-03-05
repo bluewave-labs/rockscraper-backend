@@ -7,4 +7,4 @@ interface UserInterface {
   updatedAt: Date;
 }
 
-export default UserInterface;
+export { UserInterface };
