@@ -10,6 +10,7 @@ services:
     restart: on-failure
     ports:
       - 3000:3000
+    command: npm run dev
     environment:
       MONGO_HOST: $MONGO_HOST
       MONGO_PORT: $MONGO_PORT
