@@ -1,6 +1,8 @@
+import { NextFunction, Request, Response } from "express";
+
 const { MAX_FILE_SIZE } = require('../utils/constants.helper');
 
-const fileSizeValidator = (req, res, next) => {
+const fileSizeValidator = (req: Request, res: Response, next: NextFunction) => {
     if(req.method !== 'POST' && req.method !== 'PUT') {
         return next();
     }
@@ -22,4 +24,4 @@ const fileSizeValidator = (req, res, next) => {
     next();
 };
 
-module.exports = fileSizeValidator;
+export default fileSizeValidator;

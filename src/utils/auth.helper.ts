@@ -1,4 +1,4 @@
-const decode = (str) => {
+const decode = (str: string) => {
   const isBase64 = /^data:image\/[a-zA-Z]+;base64,/.test(str);
   try {
     if (isBase64) {
@@ -11,6 +11,4 @@ const decode = (str) => {
   }
 };
 
-module.exports = {
-  decode,
-};
+export { decode };
