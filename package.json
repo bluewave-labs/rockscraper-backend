@@ -13,8 +13,9 @@
     "test:unit": "NODE_ENV=test mocha 'src/test/unit/**/*.test.js' --watch",
     "prod": "node index.js",
     "build": "echo 'No build script defined'",
-    "dockerUp": "NODE_ENV=development docker-compose --env-file .env.dev up -d",
-    "dockerDown": "docker-compose down"
+    "dockerUp": "NODE_ENV=dev docker-compose --env-file .env.dev up --build -d",
+    "dockerDown": "docker-compose down",
+    "dockerWatch": "NODE_ENV=dev docker-compose --env-file .env.dev up --build --watch"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +28,7 @@
     "express": "^4.19.2",
     "express-validator": "^7.1.0",
     "helmet": "^7.1.0",
+    "ioredis": "^5.6.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.11.0"
   },
