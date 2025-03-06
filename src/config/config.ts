@@ -5,8 +5,6 @@ dotenv.config();
 const suffix = `.${process.env.NODE_ENV ?? 'dev'}`;
 dotenv.config({ path: `./.env${suffix}` });
 
-console.log({ NODE_ENV: process.env.NODE_ENV, suffix });
-
 const requiredEnvVars = [
   'MONGO_HOST',
   'MONGO_PORT',
@@ -23,7 +21,7 @@ if (missingEnvVars.length > 0) {
   throw new Error(`Missing required environment variables: ${missingEnvVars.join(', ')}`);
 }
 
-const { MONGO_USER, MONGO_PASSWORD, MONGO_HOST, MONGO_PORT, MONGO_DBNAME, REDIS_HOST, REDIS_PORT, REDIS_DB } =
+const { MONGO_USER, MONGO_PASSWORD, MONGO_HOST, MONGO_PORT, MONGO_DBNAME, REDIS_HOST, REDIS_PORT, REDIS_DB, NODE_ENV } =
   process.env;
 
 const config = {
@@ -36,6 +34,7 @@ const config = {
   redisPort: REDIS_PORT,
   redisHost: REDIS_HOST,
   redisDB: REDIS_DB,
+  env: NODE_ENV,
 };
 
 export default config;
