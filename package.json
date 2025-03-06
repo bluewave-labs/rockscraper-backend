@@ -4,15 +4,14 @@
   "description": "Onboarding app for Bluewave",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "node dist/index.ts",
     "dev": "nodemon --watch \"./src/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.ts,src/**/*.json\" --exec \"ts-node src/index.ts\"",
     "pretest": "NODE_ENV=test bash pretest-script.sh",
     "posttest": "bash posttest-script.sh",
     "test": "NODE_ENV=test nyc mocha --extension js,mjs 'src/test/**/*.test.*'",
     "test:e2e": "npm run pretest && NODE_ENV=test mocha 'src/test/e2e/**/*.test.mjs'",
     "test:unit": "NODE_ENV=test mocha 'src/test/unit/**/*.test.js' --watch",
-    "prod": "node index.js",
-    "build": "echo 'No build script defined'",
+    "build": "tsc",
     "dockerUp": "NODE_ENV=dev docker-compose --env-file .env.dev up --build -d",
     "dockerDown": "docker-compose down",
     "dockerWatch": "NODE_ENV=dev docker-compose --env-file .env.dev up --build --watch"

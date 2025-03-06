@@ -59,6 +59,7 @@ services:
     image: redis:6.2-alpine
     ports:
       - $REDIS_PORT:6379
+      - 8001:8001
     volumes:
       - ./data/redis:/data
     command: redis-server --save 20 1 --loglevel warning
