@@ -4,7 +4,7 @@
   "description": "Onboarding app for Bluewave",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=prod dist/index.ts",
+    "start": "NODE_ENV=prod node dist/index.js",
     "dev": "nodemon --watch \"./src/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.ts,src/**/*.json\" --exec \"ts-node src/index.ts\"",
     "pretest": "NODE_ENV=test bash pretest-script.sh",
     "posttest": "bash posttest-script.sh",
