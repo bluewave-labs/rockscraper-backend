@@ -5,6 +5,8 @@ dotenv.config();
 const suffix = `.${process.env.NODE_ENV ?? 'dev'}`;
 dotenv.config({ path: `./.env${suffix}` });
 
+console.log({ env: process.env.NODE_ENV });
+
 const requiredEnvVars = [
   'MONGO_HOST',
   'MONGO_PORT',
