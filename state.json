@@ -1,0 +1,207 @@
+{
+  "tasks": [
+    {
+      "id": "e52c6513-e609-43b7-818c-2cd434a746b5",
+      "url": "https://example.com/page1",
+      "priority": 4,
+      "status": "completed",
+      "created_at": "2025-03-27T20:42:10.907052",
+      "updated_at": "2025-03-27T20:42:11.909739",
+      "timeout_ms": 30000,
+      "data": {
+        "required_capability": "javascript"
+      },
+      "error_count": 0,
+      "max_retries": 3
+    },
+    {
+      "id": "da2b8ce6-dd2f-4026-a2b4-92aa487ce60c",
+      "url": "https://example.com/page2",
+      "priority": 3,
+      "status": "completed",
+      "created_at": "2025-03-27T20:42:10.907052",
+      "updated_at": "2025-03-27T20:42:14.915273",
+      "timeout_ms": 30000,
+      "data": {
+        "required_capability": "image-processing"
+      },
+      "error_count": 0,
+      "max_retries": 3
+    },
+    {
+      "id": "c03ffac7-e336-4c95-8598-c394b769a96c",
+      "url": "https://example.com/page3",
+      "priority": 3,
+      "status": "assigned",
+      "created_at": "2025-03-27T20:42:10.908043",
+      "updated_at": "2025-03-27T20:42:10.909109",
+      "timeout_ms": 30000,
+      "data": {
+        "required_capability": "form-filling",
+        "last_error": "Failed to scrape https://example.com/page3"
+      },
+      "error_count": 1,
+      "max_retries": 3
+    },
+    {
+      "id": "6eaa2594-ac43-4c14-b9a4-a58c179eff62",
+      "url": "https://example.com/page4",
+      "priority": 5,
+      "status": "completed",
+      "created_at": "2025-03-27T20:42:10.908043",
+      "updated_at": "2025-03-27T20:42:12.911074",
+      "timeout_ms": 30000,
+      "data": {},
+      "error_count": 0,
+      "max_retries": 3
+    },
+    {
+      "id": "d1e27c44-441c-4fb5-9d50-75c0a965fcf7",
+      "url": "https://example.com/page5",
+      "priority": 1,
+      "status": "completed",
+      "created_at": "2025-03-27T20:42:10.908043",
+      "updated_at": "2025-03-27T20:42:13.913112",
+      "timeout_ms": 30000,
+      "data": {
+        "required_capability": "javascript"
+      },
+      "error_count": 0,
+      "max_retries": 3
+    },
+    {
+      "id": "26167f2c-35c2-418d-980d-8a6ce44055d8",
+      "url": "https://example.com/page6",
+      "priority": 4,
+      "status": "completed",
+      "created_at": "2025-03-27T20:42:10.908043",
+      "updated_at": "2025-03-27T20:42:15.917854",
+      "timeout_ms": 30000,
+      "data": {
+        "required_capability": "image-processing"
+      },
+      "error_count": 0,
+      "max_retries": 3
+    }
+  ],
+  "workers": [
+    {
+      "id": "4ea9021b-af75-49e6-92fb-e81d3ff862dc",
+      "name": "Worker1",
+      "status": "online",
+      "capabilities": [
+        "basic-scraping",
+        "javascript"
+      ],
+      "current_load": 0,
+      "max_load": 5,
+      "ip_address": "192.168.1.101",
+      "last_heartbeat": "2025-03-27T20:42:10.906038",
+      "current_tasks": []
+    },
+    {
+      "id": "413e2699-d2f2-4091-847b-63a1f5543a55",
+      "name": "Worker2",
+      "status": "online",
+      "capabilities": [
+        "basic-scraping",
+        "image-processing"
+      ],
+      "current_load": 0,
+      "max_load": 5,
+      "ip_address": "192.168.1.102",
+      "last_heartbeat": "2025-03-27T20:42:10.906038",
+      "current_tasks": []
+    },
+    {
+      "id": "e11d9fa2-b6e3-4dd9-bf50-fc185acc0784",
+      "name": "Worker3",
+      "status": "online",
+      "capabilities": [
+        "basic-scraping",
+        "form-filling"
+      ],
+      "current_load": 0,
+      "max_load": 5,
+      "ip_address": "192.168.1.103",
+      "last_heartbeat": "2025-03-27T20:42:10.906038",
+      "current_tasks": []
+    }
+  ],
+  "results": [
+    {
+      "task_id": "e52c6513-e609-43b7-818c-2cd434a746b5",
+      "worker_id": "4ea9021b-af75-49e6-92fb-e81d3ff862dc",
+      "success": true,
+      "data": {
+        "scraped_content": "Content from https://example.com/page1",
+        "timestamp": "2025-03-27T20:42:11.909739"
+      },
+      "error": null,
+      "execution_time_ms": 1710,
+      "completed_at": "2025-03-27T20:42:11.909739"
+    },
+    {
+      "task_id": "6eaa2594-ac43-4c14-b9a4-a58c179eff62",
+      "worker_id": "4ea9021b-af75-49e6-92fb-e81d3ff862dc",
+      "success": true,
+      "data": {
+        "scraped_content": "Content from https://example.com/page4",
+        "timestamp": "2025-03-27T20:42:12.911074"
+      },
+      "error": null,
+      "execution_time_ms": 480,
+      "completed_at": "2025-03-27T20:42:12.911074"
+    },
+    {
+      "task_id": "d1e27c44-441c-4fb5-9d50-75c0a965fcf7",
+      "worker_id": "4ea9021b-af75-49e6-92fb-e81d3ff862dc",
+      "success": true,
+      "data": {
+        "scraped_content": "Content from https://example.com/page5",
+        "timestamp": "2025-03-27T20:42:13.913112"
+      },
+      "error": null,
+      "execution_time_ms": 980,
+      "completed_at": "2025-03-27T20:42:13.913112"
+    },
+    {
+      "task_id": "da2b8ce6-dd2f-4026-a2b4-92aa487ce60c",
+      "worker_id": "413e2699-d2f2-4091-847b-63a1f5543a55",
+      "success": true,
+      "data": {
+        "scraped_content": "Content from https://example.com/page2",
+        "timestamp": "2025-03-27T20:42:14.915273"
+      },
+      "error": null,
+      "execution_time_ms": 921,
+      "completed_at": "2025-03-27T20:42:14.915273"
+    },
+    {
+      "task_id": "26167f2c-35c2-418d-980d-8a6ce44055d8",
+      "worker_id": "413e2699-d2f2-4091-847b-63a1f5543a55",
+      "success": true,
+      "data": {
+        "scraped_content": "Content from https://example.com/page6",
+        "timestamp": "2025-03-27T20:42:15.917854"
+      },
+      "error": null,
+      "execution_time_ms": 1325,
+      "completed_at": "2025-03-27T20:42:15.917854"
+    },
+    {
+      "task_id": "c03ffac7-e336-4c95-8598-c394b769a96c",
+      "worker_id": "e11d9fa2-b6e3-4dd9-bf50-fc185acc0784",
+      "success": false,
+      "data": null,
+      "error": "Failed to scrape https://example.com/page3",
+      "execution_time_ms": 613,
+      "completed_at": "2025-03-27T20:42:16.920012"
+    }
+  ],
+  "settings": {
+    "distribution_strategy": "capability_match",
+    "heartbeat_timeout_ms": 60000,
+    "task_check_interval_sec": 10
+  }
+}
