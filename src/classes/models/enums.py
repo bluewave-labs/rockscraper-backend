@@ -24,4 +24,21 @@ class DistributionStrategy(str, Enum):
     ROUND_ROBIN = 'round_robin'
     LEAST_BUSY = 'least_busy'
     PRIORITY_BASED = 'priority_based'
-    CAPABILITY_MATCH = 'capability_match' 
+    CAPABILITY_MATCH = 'capability_match'
+
+class ContentType(str, Enum):
+    """Type of content scraped"""
+    HTML = 'html'
+    JSON = 'json'
+    XML = 'xml'
+    TEXT = 'text'
+    IMAGE = 'image'
+    UNKNOWN = 'unknown'
+
+class LinkStatus(str, Enum):
+    """Status of a link in the crawling process"""
+    DISCOVERED = 'discovered'
+    QUEUED = 'queued'
+    CRAWLED = 'crawled'
+    ERROR = 'error'
+    IGNORED = 'ignored' 
