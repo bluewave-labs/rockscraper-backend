@@ -1,69 +1,53 @@
-# Use root/example as user/password credentials
-version: '3.1'
-
 services:
-  back:
-    image: back
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: on-failure
-    ports:
-      - 3000:3000
-    command: npm run dev
-    environment:
-      MONGO_HOST: $MONGO_HOST
-      MONGO_PORT: $MONGO_PORT
-      MONGO_USER: $MONGO_USER
-      MONGO_PASSWORD: $MONGO_PASSWORD
-      REDIS_HOST: redis
-      MONGO_DBNAME: $MONGO_DBNAME
-      REDIS_PORT: $REDIS_PORT
-      REDIS_DB: $REDIS_DB
-    depends_on:
-      - mongo
-      - redis
-    develop:
-      watch:
-        - action: sync
-          path: ./src
-          target: /src
-          ignore:
-            - node_modules/
-        - action: rebuild
-          path: package.json
-  mongo:
-    image: mongo
-    restart: on-failure
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: $MONGO_USER
-      MONGO_INITDB_ROOT_PASSWORD: $MONGO_PASSWORD
-    ports:
-      - $MONGO_PORT:27017
+  rockscraper_backend:
+    image: rockscraper_backend/rockscraper_backend:v0
+    build: .
     volumes:
-      - ./data/db:/data/db
-
-  mongo-express:
-    image: mongo-express
-    restart: on-failure
+      - ./:/app
+      - /app/node_modules
     ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: $MONGO_USER
-      ME_CONFIG_MONGODB_ADMINPASSWORD: $MONGO_PASSWORD
-      ME_CONFIG_MONGODB_URL: mongodb://$MONGO_USER:$MONGO_PASSWORD@$MONGO_HOST:$MONGO_PORT/
+      - "3000:3000"
     depends_on:
-      - mongo
-
+      - postgres
+      - redis
+    command: >
+      bash -c "
+        if [ \"$$NODE_ENV\" = \"production\" ]; then
+          if ! npx sequelize-cli db:migrate; then
+            if ! npx sequelize-cli db:create; then
+              echo 'Database already exists';
+            fi;
+            npx sequelize-cli db:migrate;
+          fi;
+        fi;
+        if [ \"$$NODE_ENV\" = \"production\" ]; then
+          npm run prod;
+        elif [ \"$$NODE_ENV\" = \"staging\" ]; then
+          npm run staging;
+        else
+          npm run dev;
+        fi"
+  postgres:
+    image: postgres:latest
+    env_file:
+      - .env.${NODE_ENV}
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
   redis:
     image: redis/redis-stack:latest
     restart: on-failure
     ports:
-      - $REDIS_PORT:6379
+      - ${REDIS_PORT}:6379
       - 8001:8001
     volumes:
       - ./data/redis:/data
     command: redis-stack-server
 
 volumes:
-  data:
+  pgdata:

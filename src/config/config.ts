@@ -8,11 +8,11 @@ dotenv.config({ path: `./.env${suffix}` });
 console.log({ env: process.env.NODE_ENV });
 
 const requiredEnvVars = [
-  'MONGO_HOST',
-  'MONGO_PORT',
-  'MONGO_DBNAME',
-  'MONGO_USER',
-  'MONGO_PASSWORD',
+  'POSTGRES_USER',
+  'POSTGRES_PASSWORD',
+  'POSTGRES_HOST',
+  'POSTGRES_PORT',
+  'POSTGRES_DB',
   'REDIS_HOST',
   'REDIS_PORT',
   'REDIS_DB',
@@ -23,16 +23,16 @@ if (missingEnvVars.length > 0) {
   throw new Error(`Missing required environment variables: ${missingEnvVars.join(', ')}`);
 }
 
-const { MONGO_USER, MONGO_PASSWORD, MONGO_HOST, MONGO_PORT, MONGO_DBNAME, REDIS_HOST, REDIS_PORT, REDIS_DB, NODE_ENV } =
+const { POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DB, REDIS_HOST, REDIS_PORT, REDIS_DB, NODE_ENV } =
   process.env;
 
 const config = {
-  username: MONGO_USER,
-  password: MONGO_PASSWORD,
-  database: MONGO_DBNAME,
-  host: MONGO_HOST,
-  port: MONGO_PORT,
-  dialect: 'mongodb',
+  username: POSTGRES_USER,
+  password: POSTGRES_PASSWORD,
+  database: POSTGRES_DB,
+  host: POSTGRES_HOST,
+  port: POSTGRES_PORT,
+  dialect: 'postgres',
   redisPort: REDIS_PORT,
   redisHost: REDIS_HOST,
   redisDB: REDIS_DB,
