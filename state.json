@@ -1,0 +1,203 @@
+{
+  "tasks": [
+    {
+      "id": "8378d755-2cbe-4763-9f06-a1c61c4f1437",
+      "url": "https://example.com/page1",
+      "priority": 2,
+      "status": "completed",
+      "created_at": "2025-03-27T21:00:09.925998",
+      "updated_at": "2025-03-27T21:00:10.928582",
+      "timeout_ms": 30000,
+      "data": {
+        "required_capability": "javascript"
+      },
+      "error_count": 0,
+      "max_retries": 3
+    },
+    {
+      "id": "1af5738b-0aeb-45b5-a76c-d3b7f05ffa35",
+      "url": "https://example.com/page2",
+      "priority": 1,
+      "status": "assigned",
+      "created_at": "2025-03-27T21:00:09.925998",
+      "updated_at": "2025-03-27T21:00:09.926997",
+      "timeout_ms": 30000,
+      "data": {
+        "required_capability": "image-processing",
+        "last_error": "Failed to scrape https://example.com/page2"
+      },
+      "error_count": 1,
+      "max_retries": 3
+    },
+    {
+      "id": "18f2ebe2-5903-4477-9d3b-09c19f4cf382",
+      "url": "https://example.com/page3",
+      "priority": 3,
+      "status": "assigned",
+      "created_at": "2025-03-27T21:00:09.925998",
+      "updated_at": "2025-03-27T21:00:09.926997",
+      "timeout_ms": 30000,
+      "data": {
+        "required_capability": "form-filling",
+        "last_error": "Failed to scrape https://example.com/page3"
+      },
+      "error_count": 1,
+      "max_retries": 3
+    },
+    {
+      "id": "97dd73c5-8e47-4b74-a453-b6c728a7b016",
+      "url": "https://example.com/page4",
+      "priority": 3,
+      "status": "completed",
+      "created_at": "2025-03-27T21:00:09.926997",
+      "updated_at": "2025-03-27T21:00:11.931737",
+      "timeout_ms": 30000,
+      "data": {},
+      "error_count": 0,
+      "max_retries": 3
+    },
+    {
+      "id": "86521775-bc09-4ccd-bd00-df87b51880a3",
+      "url": "https://example.com/page5",
+      "priority": 4,
+      "status": "assigned",
+      "created_at": "2025-03-27T21:00:09.926997",
+      "updated_at": "2025-03-27T21:00:09.926997",
+      "timeout_ms": 30000,
+      "data": {
+        "required_capability": "javascript",
+        "last_error": "Failed to scrape https://example.com/page5"
+      },
+      "error_count": 1,
+      "max_retries": 3
+    },
+    {
+      "id": "97303b2e-fc68-4ca7-bd67-0707706027f8",
+      "url": "https://example.com/page6",
+      "priority": 5,
+      "status": "completed",
+      "created_at": "2025-03-27T21:00:09.926997",
+      "updated_at": "2025-03-27T21:00:14.937570",
+      "timeout_ms": 30000,
+      "data": {
+        "required_capability": "image-processing"
+      },
+      "error_count": 0,
+      "max_retries": 3
+    }
+  ],
+  "workers": [
+    {
+      "id": "b27eab47-51ed-40f9-a810-24ab68417920",
+      "name": "Worker1",
+      "status": "online",
+      "capabilities": [
+        "basic-scraping",
+        "javascript"
+      ],
+      "current_load": 0,
+      "max_load": 5,
+      "ip_address": "192.168.1.101",
+      "last_heartbeat": "2025-03-27T21:00:09.924999",
+      "current_tasks": []
+    },
+    {
+      "id": "eba552f1-1378-46b1-80e8-1712e72dbbb8",
+      "name": "Worker2",
+      "status": "online",
+      "capabilities": [
+        "basic-scraping",
+        "image-processing"
+      ],
+      "current_load": 0,
+      "max_load": 5,
+      "ip_address": "192.168.1.102",
+      "last_heartbeat": "2025-03-27T21:00:09.925998",
+      "current_tasks": []
+    },
+    {
+      "id": "36600dc1-6dfe-4a7b-b86e-56e1a1c16592",
+      "name": "Worker3",
+      "status": "online",
+      "capabilities": [
+        "basic-scraping",
+        "form-filling"
+      ],
+      "current_load": 0,
+      "max_load": 5,
+      "ip_address": "192.168.1.103",
+      "last_heartbeat": "2025-03-27T21:00:09.925998",
+      "current_tasks": []
+    }
+  ],
+  "results": [
+    {
+      "task_id": "8378d755-2cbe-4763-9f06-a1c61c4f1437",
+      "worker_id": "b27eab47-51ed-40f9-a810-24ab68417920",
+      "success": true,
+      "data": {
+        "scraped_content": "Content from https://example.com/page1",
+        "timestamp": "2025-03-27T21:00:10.928582"
+      },
+      "error": null,
+      "execution_time_ms": 1895,
+      "completed_at": "2025-03-27T21:00:10.928582"
+    },
+    {
+      "task_id": "97dd73c5-8e47-4b74-a453-b6c728a7b016",
+      "worker_id": "b27eab47-51ed-40f9-a810-24ab68417920",
+      "success": true,
+      "data": {
+        "scraped_content": "Content from https://example.com/page4",
+        "timestamp": "2025-03-27T21:00:11.931737"
+      },
+      "error": null,
+      "execution_time_ms": 1508,
+      "completed_at": "2025-03-27T21:00:11.931737"
+    },
+    {
+      "task_id": "86521775-bc09-4ccd-bd00-df87b51880a3",
+      "worker_id": "b27eab47-51ed-40f9-a810-24ab68417920",
+      "success": false,
+      "data": null,
+      "error": "Failed to scrape https://example.com/page5",
+      "execution_time_ms": 478,
+      "completed_at": "2025-03-27T21:00:12.933347"
+    },
+    {
+      "task_id": "1af5738b-0aeb-45b5-a76c-d3b7f05ffa35",
+      "worker_id": "eba552f1-1378-46b1-80e8-1712e72dbbb8",
+      "success": false,
+      "data": null,
+      "error": "Failed to scrape https://example.com/page2",
+      "execution_time_ms": 1113,
+      "completed_at": "2025-03-27T21:00:13.935169"
+    },
+    {
+      "task_id": "97303b2e-fc68-4ca7-bd67-0707706027f8",
+      "worker_id": "eba552f1-1378-46b1-80e8-1712e72dbbb8",
+      "success": true,
+      "data": {
+        "scraped_content": "Content from https://example.com/page6",
+        "timestamp": "2025-03-27T21:00:14.937570"
+      },
+      "error": null,
+      "execution_time_ms": 774,
+      "completed_at": "2025-03-27T21:00:14.937570"
+    },
+    {
+      "task_id": "18f2ebe2-5903-4477-9d3b-09c19f4cf382",
+      "worker_id": "36600dc1-6dfe-4a7b-b86e-56e1a1c16592",
+      "success": false,
+      "data": null,
+      "error": "Failed to scrape https://example.com/page3",
+      "execution_time_ms": 704,
+      "completed_at": "2025-03-27T21:00:15.939778"
+    }
+  ],
+  "settings": {
+    "distribution_strategy": "capability_match",
+    "heartbeat_timeout_ms": 60000,
+    "task_check_interval_sec": 10
+  }
+}
