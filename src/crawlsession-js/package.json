@@ -1,0 +1,11 @@
+{
+  "name": "crawl-session-example",
+  "version": "1.0.0",
+  "description": "Example of using the Crawl API with sessions",
+  "scripts": {
+    "start": "node crawlsession-client.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
